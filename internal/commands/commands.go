@@ -18,3 +18,13 @@ func handlerLogin(s *state, cmd command) error {
 	fmt.Println("User has been set to", userName)
 	return nil
 }
+
+func (comm commands) run(s *state, cmd command) error {
+	funcName := cmd.name
+	fun, ok := comm.nameToHandr[funcName]
+	if !ok {
+		return errors.New("function does not exist")
+	}
+	fun(s, cmd)
+	return nil
+}
