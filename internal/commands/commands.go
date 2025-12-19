@@ -14,17 +14,19 @@ func handlerLogin(s *state, cmd command) error {
 	}
 	// set new user
 	userName := cmd.arguments[0]
-	s.file.CurrentUser = userName
+	s.file.SetUser(userName)
 	fmt.Println("User has been set to", userName)
 	return nil
 }
 
 func (comm commands) run(s *state, cmd command) error {
+	// check if function exists
 	funcName := cmd.name
 	fun, ok := comm.nameToHandr[funcName]
 	if !ok {
 		return errors.New("function does not exist")
 	}
+	// call the function
 	fun(s, cmd)
 	return nil
 }
