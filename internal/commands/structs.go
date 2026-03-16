@@ -4,7 +4,7 @@ import (
 	"github.com/Adfmu1/blog_aggregator/internal/config"
 )
 
-type commands struct {
+type Commands struct {
 	nameToHandr map[string]func(*state, command) error
 }
 

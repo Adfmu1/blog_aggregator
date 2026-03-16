@@ -20,7 +20,7 @@ func handlerLogin(s *state, cmd command) error {
 }
 
 // run a function with given state and name
-func (comm *commands) run(s *state, cmd command) error {
+func (comm *Commands) run(s *state, cmd command) error {
 	// check if function exists
 	funcName := cmd.name
 	fun, ok := comm.nameToHandr[funcName]
@@ -33,6 +33,6 @@ func (comm *commands) run(s *state, cmd command) error {
 }
 
 // register a command with a given name
-func (comm *commands) register(name string, f func(*state, command) error) {
+func (comm *Commands) register(name string, f func(*state, command) error) {
 	comm.nameToHandr[name] = f
 }
