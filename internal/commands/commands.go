@@ -28,8 +28,7 @@ func (comm *Commands) Run(s *State, cmd Command) error {
 		return errors.New("function does not exist")
 	}
 	// call the function
-	fun(s, cmd)
-	return nil
+	return fun(s, cmd)
 }
 
 // register a command with a given name
