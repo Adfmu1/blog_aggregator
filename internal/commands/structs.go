@@ -9,8 +9,8 @@ type Commands struct {
 }
 
 type Command struct {
-	name      string
-	arguments []string
+	Name      string
+	Arguments []string
 }
 
 type State struct {
