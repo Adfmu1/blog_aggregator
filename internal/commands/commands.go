@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func handlerLogin(s *state, cmd command) error {
+func HandlerLogin(s *State, cmd Command) error {
 	// check for number of arguments
 	if len(cmd.arguments) == 0 {
 		return errors.New("no arguments given")
@@ -14,16 +14,16 @@ func handlerLogin(s *state, cmd command) error {
 	}
 	// set new user
 	userName := cmd.arguments[0]
-	s.file.SetUser(userName)
+	s.File.SetUser(userName)
 	fmt.Println("User has been set to", userName)
 	return nil
 }
 
 // run a function with given state and name
-func (comm *Commands) run(s *state, cmd command) error {
+func (comm *Commands) run(s *State, cmd Command) error {
 	// check if function exists
 	funcName := cmd.name
-	fun, ok := comm.nameToHandr[funcName]
+	fun, ok := comm.RegisteredComms[funcName]
 	if !ok {
 		return errors.New("function does not exist")
 	}
@@ -33,6 +33,6 @@ func (comm *Commands) run(s *state, cmd command) error {
 }
 
 // register a command with a given name
-func (comm *Commands) register(name string, f func(*state, command) error) {
-	comm.nameToHandr[name] = f
+func (comm *Commands) Register(name string, f func(*State, Command) error) {
+	comm.RegisteredComms[name] = f
 }

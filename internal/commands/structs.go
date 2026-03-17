@@ -5,14 +5,14 @@ import (
 )
 
 type Commands struct {
-	nameToHandr map[string]func(*state, command) error
+	RegisteredComms map[string]func(*State, Command) error
 }
 
-type command struct {
+type Command struct {
 	name      string
 	arguments []string
 }
 
-type state struct {
-	file *config.Config
+type State struct {
+	File *config.Config
 }
