@@ -7,7 +7,7 @@ import (
 )
 
 // ============ CONSTANTS ============
-const configFileName = "/gatorconfig.json"
+const configFileName = "/.gatorconfig.json"
 
 // ============ HELPER FUNCTIONS ============
 func CheckPrintErr(err error) {
