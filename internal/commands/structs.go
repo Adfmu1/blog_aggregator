@@ -2,6 +2,7 @@ package commands
 
 import (
 	"github.com/Adfmu1/blog_aggregator/internal/config"
+	"github.com/Adfmu1/blog_aggregator/internal/database"
 )
 
 type Commands struct {
@@ -14,5 +15,6 @@ type Command struct {
 }
 
 type State struct {
+	Database *database.Queries
 	File *config.Config
 }
